@@ -1,9 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora</title>
+    <title>Calcular Datas</title>
+    <script>
+       
+        function maiorData(data1, data2) {
+            if (data1 > data2) {
+                return data1;
+            } else {
+                return data2;
+            }
+        }
+
+     
+        function intervaloEntreDatas(data1, data2) {
+            if (data1 > data2) {
+                console.log("A primeira data deve ser mais antiga que a segunda data");
+                return null;
+            } else {
+                var diferenca = data2.getTime() - data1.getTime();
+                var dias = diferenca / (1000 * 3600 * 24);
+                return dias;
+            }
+        }
+
+  
+        function dataAtualFormatada() {
+            var dataAtual = new Date();
+            var dia = dataAtual.getDate();
+            var mes = dataAtual.getMonth() + 1;
+            var ano = dataAtual.getFullYear();
+            var hora = dataAtual.getHours();
+            var minuto = dataAtual.getMinutes();
+
+            return hora + "" + minuto + " - " + dia + "/" + mes + "/" + ano;
+        }
+
+
+        function calculate() {
+            var date1 = new Date(document.getElementById('date1').value);
+            var date2 = new Date(document.getElementById('date2').value);
+
+            var maior = maiorData(date1, date2);
+            var intervalo = intervaloEntreDatas(date1, date2);
+            var dataFormatada = dataAtualFormatada();
+
+            document.getElementById('result').innerHTML = "Maior Data: " + maior + "<br>Intervalo: " + intervalo + " dias<br>Data Atual Formatada: " + dataFormatada;
+        }
+    </script>
   </head>
   <body>
     <h2>Calculadora de Datas</h2>
@@ -13,9 +59,10 @@
 
       <label for="date2">Segunda Data:</label>
       <input type="date" id="date2" required />
+
       <button type="button" onclick="calculate()">Calcular</button>
     </form>
+
     <div id="result"></div>
-    <script src="main.js"></script>
   </body>
 </html>
