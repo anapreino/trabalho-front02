@@ -1,10 +1,10 @@
 function findMaxDate(date1, date2) {
-    // Converte as datas para o formato ISO para comparação
+   
     return date1.toISOString() > date2.toISOString() ? date1 : date2;
   }
   
   function calculateDateInterval(date1, date2) {
-    // Garante que a data1 é sempre a mais antiga
+   
     if (date1 > date2) {
       [date1, date2] = [date2, date1];
     }
@@ -49,4 +49,5 @@ function findMaxDate(date1, date2) {
         <p>Data atual: ${currentDate}</p>
     `;
   }
+  
   
